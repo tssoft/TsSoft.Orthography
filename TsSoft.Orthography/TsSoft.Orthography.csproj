@@ -43,6 +43,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Language\IWordModifier.cs" />
+    <Compile Include="Language\IGender.cs" />
+    <Compile Include="Language\IPlural.cs" />
+    <Compile Include="Language\IDeclensionCase.cs" />
+    <Compile Include="Numbers\NumberConverterRussianResources.cs" />
+    <Compile Include="Numbers\INumberConverterResources.cs" />
+    <Compile Include="RussianLanguage\RussianGenderEnum.cs" />
     <Compile Include="Numbers\NumberToWordsConverter.cs" />
     <Compile Include="Numbers\INumberToWordConverter.cs" />
     <Compile Include="Numbers\NumbersToWordsConverterFactory.cs" />
@@ -54,6 +61,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourcesRu.resx</DependentUpon>
     </Compile>
+    <Compile Include="RussianLanguage\RussianDeclensionCase.cs" />
+    <Compile Include="RussianLanguage\RussianDeclensionCaseEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\ResourcesRu.resx">
@@ -64,9 +73,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="RussianLanguage\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

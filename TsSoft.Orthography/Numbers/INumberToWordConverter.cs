@@ -1,4 +1,6 @@
-﻿namespace TsSoft.Orthography.Numbers
+﻿using TsSoft.Orthography.Language;
+
+namespace TsSoft.Orthography.Numbers
 {
     public interface INumberToWordConverter
     {
@@ -8,5 +10,6 @@
         /// <param name="number"></param>
         /// <returns></returns>
         string ConvertCurrency(decimal number);
+        string ConvertCurrency(decimal number, IDeclensionCase declensionCaseCase);
     }
 }

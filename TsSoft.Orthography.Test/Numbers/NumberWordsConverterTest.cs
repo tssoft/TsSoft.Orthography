@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TsSoft.Orthography.Numbers;
+using TsSoft.Orthography.RussianLanguage;
 
 namespace TsSoft.Orthography.Test.Numbers
 {
@@ -27,30 +28,66 @@ namespace TsSoft.Orthography.Test.Numbers
             NumbersToWordsConverterFactory.CreateConverter();
         }
 
-        
+
         [TestMethod]
         public void TestConvert()
         {
+            //Именительный (по-умолчанию)
             INumberToWordConverter numberToWordsConverter = NumbersToWordsConverterFactory.CreateRussianConverter();
-            Assert.AreEqual("десять рублей 50 копеек", numberToWordsConverter.ConvertCurrency(10.50M));
-            Assert.AreEqual("одна тысяча рублей 00 копеек", numberToWordsConverter.ConvertCurrency(1000M));
-            Assert.AreEqual("две тысячи рублей 00 копеек", numberToWordsConverter.ConvertCurrency(2000M));
-            Assert.AreEqual("один миллион пять тысяч рублей 50 копеек", numberToWordsConverter.ConvertCurrency(1005000.50M));
-            Assert.AreEqual("сто рублей 05 копеек", numberToWordsConverter.ConvertCurrency(100.05M));
-            Assert.AreEqual("десять рублей 00 копеек", numberToWordsConverter.ConvertCurrency(10M));
-            Assert.AreEqual("десять миллионов рублей 00 копеек", numberToWordsConverter.ConvertCurrency(10000000M));
+            var declensionCase = new RussianDeclensionCase {Value  = RussianDeclensionCaseEnum.CaseI};
+            Assert.AreEqual("десять рублей 50 копеек", numberToWordsConverter.ConvertCurrency(10.50M, declensionCase));
+            Assert.AreEqual("одна тысяча рублей 00 копеек", numberToWordsConverter.ConvertCurrency(1000M, declensionCase));
+            Assert.AreEqual("две тысячи рублей 00 копеек", numberToWordsConverter.ConvertCurrency(2000M, declensionCase));
+            Assert.AreEqual("один миллион пять тысяч рублей 50 копеек",
+                            numberToWordsConverter.ConvertCurrency(1005000.50M, declensionCase));
+            Assert.AreEqual("сто рублей 05 копеек", numberToWordsConverter.ConvertCurrency(100.05M, declensionCase));
+            Assert.AreEqual("десять рублей 00 копеек", numberToWordsConverter.ConvertCurrency(10M, declensionCase));
+            Assert.AreEqual("четыре рубля 04 копейки", numberToWordsConverter.ConvertCurrency(4.04M, declensionCase));
+            Assert.AreEqual("четырнадцать рублей 14 копеек", numberToWordsConverter.ConvertCurrency(14.14M, declensionCase));
+            Assert.AreEqual("десять миллионов рублей 00 копеек",
+                            numberToWordsConverter.ConvertCurrency(10000000M, declensionCase));
             Assert.AreEqual("сто двадцать два миллиона сто пятьдесят шесть тысяч девятьсот сорок два рубля 00 копеек",
-                            numberToWordsConverter.ConvertCurrency(122156942M));
-            //Assert.AreEqual("десять рублей",
-            //                NumberToWordsConverter.Convert(10.50M, NumberMeasuringForms.CurrencyRuUnit));
+                            numberToWordsConverter.ConvertCurrency(122156942M, declensionCase));
+            //проверка определения падежа по-умолчанию
             Assert.AreEqual("ноль рублей 00 копеек", numberToWordsConverter.ConvertCurrency(0M));
+            Assert.AreEqual("ноль рублей 01 копейка", numberToWordsConverter.ConvertCurrency(0.01M));
+            Assert.AreEqual("ноль рублей 02 копейки", numberToWordsConverter.ConvertCurrency(0.02M));
             Assert.AreEqual("ноль рублей 50 копеек", numberToWordsConverter.ConvertCurrency(0.5M));
-            //Assert.AreEqual("ноль рублей",
-            //                NumberToWordsConverter.Convert(0M, NumberMeasuringForms.CurrencyRuUnit));
-            //Assert.AreEqual("одна штука",
-            //                NumberToWordsConverter.Convert(1M, true, NumberMeasuringForms.AmountUnit));
-            //Assert.AreEqual("одна тысяча штук",
-            //                NumberToWordsConverter.Convert(1000M, true, NumberMeasuringForms.AmountUnit));
+            //Родительный
+            declensionCase = new RussianDeclensionCase { Value = RussianDeclensionCaseEnum.CaseR }; 
+            Assert.AreEqual("ноль рублей 01 копейку", numberToWordsConverter.ConvertCurrency(0.01M, declensionCase));
+            Assert.AreEqual("ноль рублей 02 копейки", numberToWordsConverter.ConvertCurrency(0.02M, declensionCase));
+            Assert.AreEqual("ноль рублей 50 копеек", numberToWordsConverter.ConvertCurrency(0.5M, declensionCase));
+            Assert.AreEqual("один миллион одну тысячу рублей 50 копеек",
+                            numberToWordsConverter.ConvertCurrency(1001000.50M, declensionCase));
+            //Дательный
+            declensionCase = new RussianDeclensionCase { Value = RussianDeclensionCaseEnum.CaseD };
+            Assert.AreEqual("нолю рублям 01 копейке", numberToWordsConverter.ConvertCurrency(0.01M, declensionCase));
+            Assert.AreEqual("нолю рублям 02 копейкам", numberToWordsConverter.ConvertCurrency(0.02M, declensionCase));
+            Assert.AreEqual("нолю рублям 50 копейкам", numberToWordsConverter.ConvertCurrency(0.5M, declensionCase));
+            Assert.AreEqual("одному миллиону одной тысяче ста рублям 50 копейкам",
+                            numberToWordsConverter.ConvertCurrency(1001100.50M, declensionCase));
+            //Винительный
+            declensionCase = new RussianDeclensionCase { Value = RussianDeclensionCaseEnum.CaseV };
+            Assert.AreEqual("ноль рублей 01 копейку", numberToWordsConverter.ConvertCurrency(0.01M, declensionCase));
+            Assert.AreEqual("ноль рублей 02 копейки", numberToWordsConverter.ConvertCurrency(0.02M, declensionCase));
+            Assert.AreEqual("ноль рублей 50 копеек", numberToWordsConverter.ConvertCurrency(0.5M, declensionCase));
+            Assert.AreEqual("один миллион одну тысячу сто рублей 50 копеек",
+                            numberToWordsConverter.ConvertCurrency(1001100.50M, declensionCase));
+            //Творительный
+            declensionCase = new RussianDeclensionCase { Value = RussianDeclensionCaseEnum.CaseT };
+            Assert.AreEqual("нолем рублями 01 копейкой", numberToWordsConverter.ConvertCurrency(0.01M, declensionCase));
+            Assert.AreEqual("нолем рублями 02 копейками", numberToWordsConverter.ConvertCurrency(0.02M, declensionCase));
+            Assert.AreEqual("нолем рублями 50 копейками", numberToWordsConverter.ConvertCurrency(0.5M, declensionCase));
+            Assert.AreEqual("одним миллионом одной тысячей стами рублями 50 копейками",
+                            numberToWordsConverter.ConvertCurrency(1001100.50M, declensionCase));
+            //Предложный
+            declensionCase = new RussianDeclensionCase { Value = RussianDeclensionCaseEnum.CaseP };
+            Assert.AreEqual("ноле рублях 01 копейке", numberToWordsConverter.ConvertCurrency(0.01M, declensionCase));
+            Assert.AreEqual("ноле рублях 02 копейках", numberToWordsConverter.ConvertCurrency(0.02M, declensionCase));
+            Assert.AreEqual("ноле рублях 50 копейках", numberToWordsConverter.ConvertCurrency(0.5M, declensionCase));
+            Assert.AreEqual("одном миллионе одной тысяче ста рублях 50 копейках",
+                            numberToWordsConverter.ConvertCurrency(1001100.50M, declensionCase));
         }
     }
 }

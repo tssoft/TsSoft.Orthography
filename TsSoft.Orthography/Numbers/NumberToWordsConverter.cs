@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Resources;
 using TsSoft.Commons.Text;
 
 namespace TsSoft.Orthography.Numbers
 {
-    internal class NumberToWordsConverter : INumberToWordConverter
+    internal class NumberToWordsConverter
     {
         private const long Trillion = (long)Million * Million;
         private const int Billion = Million * Thousand;
@@ -27,23 +26,11 @@ namespace TsSoft.Orthography.Numbers
             return (long)number / Million;
         }
 
-        private ResourceManager _resourceManager;
+        public readonly INumberConverterResources NumberConverterResources;
 
-        public NumberToWordsConverter(ResourceManager resourceManager)
+        public NumberToWordsConverter(INumberConverterResources numberConverterResources)
         {
-            _resourceManager = resourceManager;
-        }
-
-        private string GetNumDescription(int num, string rank, int caseId)
-        {
-            string resourceName = rank + "_Case" + caseId;
-            var s = _resourceManager.GetString(resourceName);
-            if (s != null)
-            {
-                string[] values = s.Split(',');
-                return values[num - 1];
-            }
-            throw new Exception("Не найден ресурс " + resourceName);
+            NumberConverterResources = numberConverterResources;
         }
 
         private static long GetThousands(decimal number)
@@ -51,40 +38,40 @@ namespace TsSoft.Orthography.Numbers
             return (long)number / Thousand;
         }
 
-        private string ConvertThousand(int number, string[] forms, bool genderFemale = false, int caseId = 1)
+        private string ConvertThousand(int number, string[] forms, bool genderFemale)
         {
             string result = "";
             if (number >= Thousand * 10)
             {
                 throw new Exception("ConvertThousand: переданное число больше " + (Thousand * 10));
             }
-            NumberGroup rank = new NumberGroup { Value = number };
-            if (rank.Hundreds > 0)
+            var numberGroup = new NumberGroup { Value = number };
+            if (numberGroup.Hundreds > 0)
             {
-                result += GetNumDescription(rank.Hundreds, "Hundreds", caseId);
+                result += NumberConverterResources.ConvertNumToWord(numberGroup.Hundreds, "Hundreds");
                 result += Space;
             }
-            if (rank.Tens > 0)
+            if (numberGroup.Tens > 0)
             {
-                if (rank.Tens == 1 && rank.Units > 0)
+                if (numberGroup.Tens == 1 && numberGroup.Units > 0)
                 {
-                    result += GetNumDescription(rank.Units, "Twenties", caseId);
+                    result += NumberConverterResources.ConvertNumToWord(numberGroup.Units, "Twenties");
                 }
                 else
                 {
-                    result += GetNumDescription(rank.Tens, "Tens", caseId);
+                    result += NumberConverterResources.ConvertNumToWord(numberGroup.Tens, "Tens");
                 }
                 result += Space;
             }
-            if (rank.Tens != 1 && rank.Units > 0)
+            if (numberGroup.Tens != 1 && numberGroup.Units > 0)
             {
                 if (genderFemale)
                 {
-                    result += GetNumDescription(rank.Units + 1, "UnitsFemale", caseId);
+                    result += NumberConverterResources.ConvertNumToWord(numberGroup.Units + 1, "UnitsFemale");
                 }
                 else
                 {
-                    result += GetNumDescription(rank.Units + 1, "Units", caseId);
+                    result += NumberConverterResources.ConvertNumToWord(numberGroup.Units + 1, "Units");
                 }
                 result += Space;
             }
@@ -92,38 +79,45 @@ namespace TsSoft.Orthography.Numbers
             {
                 if (genderFemale)
                 {
-                    result += GetNumDescription(rank.Units + 1, "UnitsFemale", caseId);
+                    result += NumberConverterResources.ConvertNumToWord(numberGroup.Units + 1, "UnitsFemale");
                 }
                 else
                 {
-                    result += GetNumDescription(rank.Units + 1, "Units", caseId);
+                    result += NumberConverterResources.ConvertNumToWord(numberGroup.Units + 1, "Units");
                 }
                 result += Space;
             }
             if (forms != null)
             {
-                result += Pluralizer.Pluralize(rank.Value, forms);
+                result += Pluralizer.Pluralize(numberGroup.Value, forms);
             }
             return result;
         }
 
-        private string[] getPluralizeResource(string resourceName, int caseId)
-        {
-            resourceName += "_Pluralize_Case" + caseId;
-            var s = _resourceManager.GetString(resourceName);
-            if (s != null)
-            {
-                return s.Split(',');
-            }
-            throw new Exception("Не найден ресурс " + resourceName);
-        }
+        //private string NumberConverterResources.ConvertNumToWord(int num, string numberGroupName, int caseId)
+        //{
+        //    string resourceName = numberGroupName + "_Case" + caseId;
+        //    var s = _resourceManager.GetString(resourceName);
+        //    if (s != null)
+        //    {
+        //        string[] values = s.Split(',');
+        //        return values[num - 1];
+        //    }
+        //    throw new Exception("Не найден ресурс " + resourceName);
+        //}
 
-        public string ConvertCurrency(decimal number)
-        {
-            return Convert(number, false, 1, getPluralizeResource("CurrencyRuUnit", 1), getPluralizeResource("CurrencyRuCent", 1));
-        }
+        //protected string[] GetPluralizeResource(string resourceName, int caseId)
+        //{
+        //    resourceName += "_Pluralize_Case" + caseId;
+        //    var s = _resourceManager.GetString(resourceName);
+        //    if (s != null)
+        //    {
+        //        return s.Split(',');
+        //    }
+        //    throw new Exception("Не найден ресурс " + resourceName);
+        //}
 
-        private string Convert(decimal number, bool genderFemale, int caseId, string[] unitForms, string[] fractForms = null)
+        protected string Convert(decimal number, bool genderFemale, string[] unitForms, string[] fractForms = null)
         {
             string result = "";
             long trillions = GetTrillions(number);
@@ -134,7 +128,7 @@ namespace TsSoft.Orthography.Numbers
 
             if (trillions > 0)
             {
-                result += ConvertThousand((int)trillions, getPluralizeResource("Trillion", caseId));
+                result += ConvertThousand((int)trillions, NumberConverterResources.GetPluralizeResource("Trillion"), false);
                 result += Space;
             }
 
@@ -142,7 +136,7 @@ namespace TsSoft.Orthography.Numbers
             long billions = GetBillions(number);
             if (billions > 0)
             {
-                result += ConvertThousand((int)billions, getPluralizeResource("Billion", caseId));
+                result += ConvertThousand((int)billions, NumberConverterResources.GetPluralizeResource("Billion"), false);
                 result += Space;
             }
 
@@ -150,7 +144,7 @@ namespace TsSoft.Orthography.Numbers
             long millions = GetMillions(number);
             if (millions > 0)
             {
-                result += ConvertThousand((int)millions, getPluralizeResource("Million", caseId));
+                result += ConvertThousand((int)millions, NumberConverterResources.GetPluralizeResource("Million"), false);
                 result += Space;
             }
 
@@ -158,7 +152,7 @@ namespace TsSoft.Orthography.Numbers
             long thousands = GetThousands(number);
             if (thousands > 0)
             {
-                result += ConvertThousand((int)thousands, getPluralizeResource("Thousand", caseId), true);
+                result += ConvertThousand((int)thousands, NumberConverterResources.GetPluralizeResource("Thousand"), true);
                 result += Space;
             }
 

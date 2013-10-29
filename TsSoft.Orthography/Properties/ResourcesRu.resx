@@ -153,4 +153,184 @@
   <data name="Units_Case1" xml:space="preserve">
     <value>ноль,один,два,три,четыре,пять,шесть,семь,восемь,девять</value>
   </data>
+  <data name="AmmontUnit_Pluralize_Case2" xml:space="preserve">
+    <value>штуку,штуки,штуки</value>
+  </data>
+  <data name="Billion_Pluralize_Case2" xml:space="preserve">
+    <value>миллиард,миллиарда,миллиардов</value>
+  </data>
+  <data name="CurrencyRuCent_Pluralize_Case2" xml:space="preserve">
+    <value>копейку,копейки,копеек</value>
+  </data>
+  <data name="CurrencyRuUnit_Pluralize_Case2" xml:space="preserve">
+    <value>рубль,рубля,рублей</value>
+  </data>
+  <data name="Hundreds_Case2" xml:space="preserve">
+    <value>сто,двести,триста,четыреста,пятьсот,шестьсот,семьсот,восемьсот,девятьсот</value>
+  </data>                           
+  <data name="Million_Pluralize_Case2" xml:space="preserve">
+    <value>миллион,миллиона,миллионов</value>
+  </data>
+  <data name="Tens_Case2" xml:space="preserve">
+    <value>десять,двадцать,тридцать,сорок,пятьдесят,шестьдесят,семьдесят,восемьдесят,девяносто</value>
+  </data>
+  <data name="Thousand_Pluralize_Case2" xml:space="preserve">
+    <value>тысячу,тысячи,тысяч</value>
+  </data>
+  <data name="Trillion_Pluralize_Case2" xml:space="preserve">
+    <value>триллион,триллиона,триллионов</value>
+  </data>
+  <data name="Twenties_Case2" xml:space="preserve">
+    <value>одиннадцать,двенадцать,тринадцать,четырнадцать,пятнадцать,шестнадцать,семнадцать,восемнадцать,девятнадцать</value>
+  </data>
+  <data name="UnitsFemale_Case2" xml:space="preserve">
+    <value>ноль,одну,две,три,четыре,пять,шесть,семь,восемь,девять</value>
+  </data>
+  <data name="Units_Case2" xml:space="preserve">
+    <value>ноль,один,два,три,четыре,пять,шесть,семь,восемь,девять</value>
+  </data>
+  <data name="AmmontUnit_Pluralize_Case3" xml:space="preserve">
+    <value>штукам,штукам,штукам</value>
+  </data>
+  <data name="Billion_Pluralize_Case3" xml:space="preserve">
+    <value>миллиарду,миллиардам,миллиардам</value>
+  </data>
+  <data name="CurrencyRuCent_Pluralize_Case3" xml:space="preserve">
+    <value>копейке,копейкам,копейкам</value>
+  </data>
+  <data name="CurrencyRuUnit_Pluralize_Case3" xml:space="preserve">
+    <value>рублю,рублям,рублям</value>
+  </data>
+  <data name="Hundreds_Case3" xml:space="preserve">
+    <value>ста,двумста,тремста,четыремста,пятиста,шестиста,семиста,восьмиста,девятиста</value>
+  </data>
+  <data name="Million_Pluralize_Case3" xml:space="preserve">
+    <value>миллиону,миллионам,миллионам</value>
+  </data>
+  <data name="Tens_Case3" xml:space="preserve">
+    <value>десяти,двадцати,тридцати,сорока,пятидесяти,шестидесяти,семидесяти,восьмидесяти,девяностам</value>
+  </data>
+  <data name="Thousand_Pluralize_Case3" xml:space="preserve">
+    <value>тысяче,тысячам,тысячам</value>
+  </data>
+  <data name="Trillion_Pluralize_Case3" xml:space="preserve">
+    <value>триллиону,триллионам,триллионам</value>
+  </data>
+  <data name="Twenties_Case3" xml:space="preserve">
+    <value>одиннадцати,двенадцати,тринадцати,четырнадцати,пятнадцати,шестнадцати,семнадцати,восемнадцати,девятнадцати</value>
+  </data>
+  <data name="UnitsFemale_Case3" xml:space="preserve">
+    <value>нолю,одной,двум,трем,четырем,пяти,шести,семи,восеми,девяти</value>
+  </data>
+  <data name="Units_Case3" xml:space="preserve">
+    <value>нолю,одному,двум,трем,четырем,пяти,шести,семи,восеми,девяти</value>
+  </data>
+  <data name="AmmontUnit_Pluralize_Case4" xml:space="preserve">
+    <value>штуку,штуки,штуки</value>
+  </data>
+  <data name="Billion_Pluralize_Case4" xml:space="preserve">
+    <value>миллиард,миллиарда,миллиардов</value>
+  </data>
+  <data name="CurrencyRuCent_Pluralize_Case4" xml:space="preserve">
+    <value>копейку,копейки,копеек</value>
+  </data>
+  <data name="CurrencyRuUnit_Pluralize_Case4" xml:space="preserve">
+    <value>рубль,рубля,рублей</value>
+  </data>
+  <data name="Hundreds_Case4" xml:space="preserve">
+    <value>сто,двести,триста,четыреста,пятьсот,шестьсот,семьсот,восемьсот,девятьсот</value>
+  </data>                           
+  <data name="Million_Pluralize_Case4" xml:space="preserve">
+    <value>миллион,миллиона,миллионов</value>
+  </data>
+  <data name="Tens_Case4" xml:space="preserve">
+    <value>десять,двадцать,тридцать,сорок,пятьдесят,шестьдесят,семьдесят,восемьдесят,девяносто</value>
+  </data>
+  <data name="Thousand_Pluralize_Case4" xml:space="preserve">
+    <value>тысячу,тысячи,тысяч</value>
+  </data>
+  <data name="Trillion_Pluralize_Case4" xml:space="preserve">
+    <value>триллион,триллиона,триллионов</value>
+  </data>
+  <data name="Twenties_Case4" xml:space="preserve">
+    <value>одиннадцать,двенадцать,тринадцать,четырнадцать,пятнадцать,шестнадцать,семнадцать,восемнадцать,девятнадцать</value>
+  </data>
+  <data name="UnitsFemale_Case4" xml:space="preserve">
+    <value>ноль,одну,две,три,четыре,пять,шесть,семь,восемь,девять</value>
+  </data>
+  <data name="Units_Case4" xml:space="preserve">
+    <value>ноль,один,два,три,четыре,пять,шесть,семь,восемь,девять</value>
+  </data>
+  <data name="AmmontUnit_Pluralize_Case5" xml:space="preserve">
+    <value>штуками,штуками,штуками</value>
+  </data>
+  <data name="Billion_Pluralize_Case5" xml:space="preserve">
+    <value>миллиардом,миллиардами,миллиардами</value>
+  </data>
+  <data name="CurrencyRuCent_Pluralize_Case5" xml:space="preserve">
+    <value>копейкой,копейками,копейками</value>
+  </data>
+  <data name="CurrencyRuUnit_Pluralize_Case5" xml:space="preserve">
+    <value>рублем,рублями,рублями</value>
+  </data>
+  <data name="Hundreds_Case5" xml:space="preserve">
+    <value>стами,двумстами,тремстами,четыремстами,пятистами,шестистами,семистами,восемьюстами,девятистами</value>
+  </data>
+  <data name="Million_Pluralize_Case5" xml:space="preserve">
+    <value>миллионом,миллионами,миллионами</value>
+  </data>
+  <data name="Tens_Case5" xml:space="preserve">
+    <value>десятью,двадцатью,тридцатью,сорока,пятидесятью,шестидесятью,семидесятью,восьмидесятью,девяностами</value>
+  </data>
+  <data name="Thousand_Pluralize_Case5" xml:space="preserve">
+    <value>тысячей,тысячами,тысячами</value>
+  </data>
+  <data name="Trillion_Pluralize_Case5" xml:space="preserve">
+    <value>триллионом,триллионами,триллионами</value>
+  </data>
+  <data name="Twenties_Case5" xml:space="preserve">
+    <value>одиннадцатью,двенадцатью,тринадцатью,четырнадцатью,пятнадцатью,шестнадцатью,семнадцатью,восемнадцатью,девятнадцатью</value>
+  </data>
+  <data name="UnitsFemale_Case5" xml:space="preserve">
+    <value>нолем,одной,двумя,тремя,четырмя,пятью,шестью,семью,восемью,девятью</value>
+  </data>
+  <data name="Units_Case5" xml:space="preserve">
+    <value>нолем,одним,двумя,тремя,четырмя,пятью,шестью,семью,восемью,девятью</value>
+  </data>
+  <data name="AmmontUnit_Pluralize_Case6" xml:space="preserve">
+    <value>штуке,штуках,штуках</value>
+  </data>
+  <data name="Billion_Pluralize_Case6" xml:space="preserve">
+    <value>миллиарде,миллиардах,миллиардах</value>
+  </data>
+  <data name="CurrencyRuCent_Pluralize_Case6" xml:space="preserve">
+    <value>копейке,копейках,копейках</value>
+  </data>
+  <data name="CurrencyRuUnit_Pluralize_Case6" xml:space="preserve">
+    <value>рубле,рублях,рублях</value>
+  </data>
+  <data name="Hundreds_Case6" xml:space="preserve">
+    <value>ста,двухстах,трихтах,четырехстах,пятистах,шестистах,семистах,восьмистах,девятистах</value>
+  </data>
+  <data name="Million_Pluralize_Case6" xml:space="preserve">
+    <value>миллионе,миллионах,миллионах</value>
+  </data>
+  <data name="Tens_Case6" xml:space="preserve">
+    <value>десяти,двадцати,тридцати,сорока,пятидесяти,шестидесяти,семидесяти,восьмидесяти,девяностах</value>
+  </data>
+  <data name="Thousand_Pluralize_Case6" xml:space="preserve">
+    <value>тысяче,тысячах,тысячах</value>
+  </data>
+  <data name="Trillion_Pluralize_Case6" xml:space="preserve">
+    <value>триллионе,триллионах,триллионах</value>
+  </data>
+  <data name="Twenties_Case6" xml:space="preserve">
+    <value>одиннадцати,двенадцати,тринадцати,четырнадцати,пятнадцати,шестнадцати,семнадцати,восемнадцати,девятнадцати</value>
+  </data>
+  <data name="UnitsFemale_Case6" xml:space="preserve">
+    <value>ноле,одной,двух,трех,четырех,пяти,шести,семи,восеми,девяти</value>
+  </data>
+  <data name="Units_Case6" xml:space="preserve">
+    <value>ноле,одном,двух,трех,четырех,пяти,шести,семи,восьми,девяти</value>
+  </data>
 </root>
