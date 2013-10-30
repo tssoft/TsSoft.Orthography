@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using TsSoft.Orthography.Numbers.English;
+using TsSoft.Orthography.Numbers.Russian;
 
 namespace TsSoft.Orthography.Numbers
 {
@@ -17,6 +19,9 @@ namespace TsSoft.Orthography.Numbers
                 case "ru":
                     converter = new NumberToRussianWordsConverter();
                     break;
+                case "en":
+                    converter = new NumberToEnglishWordsConverter();
+                    break;
                 default:
                     throw new Exception("Not supported culture: " + culture.NativeName);
             }
@@ -26,6 +31,11 @@ namespace TsSoft.Orthography.Numbers
         public static INumberToWordConverter CreateRussianConverter()
         {
             return CreateConverter(CultureInfo.GetCultureInfo("ru-RU"));
+        }
+
+        public static INumberToWordConverter CreateEnglishConverter()
+        {
+            return CreateConverter(CultureInfo.GetCultureInfo("en-US"));
         }
     }
 }

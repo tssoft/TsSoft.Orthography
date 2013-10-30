@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Windows.Forms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TsSoft.Orthography.Numbers;
 using TsSoft.Orthography.RussianLanguage;
@@ -11,15 +12,21 @@ namespace TsSoft.Orthography.Test.Numbers
 
         [TestMethod]
         [ExpectedException(typeof(System.Exception))]
-        public void TestEnLocale()
+        public void TestUnsupportedLocale()
         {
-            NumbersToWordsConverterFactory.CreateConverter(new CultureInfo("en"));
+            NumbersToWordsConverterFactory.CreateConverter(new CultureInfo("tr"));
         }
 
         [TestMethod]
         public void TestRuLocale()
         {
             NumbersToWordsConverterFactory.CreateConverter(new CultureInfo("ru"));
+        }
+
+        [TestMethod]
+        public void TestEnLocale()
+        {
+            NumbersToWordsConverterFactory.CreateConverter(new CultureInfo("en"));
         }
 
         [TestMethod]
@@ -30,7 +37,7 @@ namespace TsSoft.Orthography.Test.Numbers
 
 
         [TestMethod]
-        public void TestConvert()
+        public void TestRussianConvert()
         {
             //Именительный (по-умолчанию)
             INumberToWordConverter numberToWordsConverter = NumbersToWordsConverterFactory.CreateRussianConverter();
@@ -89,5 +96,26 @@ namespace TsSoft.Orthography.Test.Numbers
             Assert.AreEqual("одном миллионе одной тысяче ста рублях 50 копейках",
                             numberToWordsConverter.ConvertCurrency(1001100.50M, declensionCase));
         }
+
+        [TestMethod]
+        public void TestEnglishConvert()
+        {
+            //для проверки http://www.calculatorsoup.com/calculators/conversions/numberstowords.php
+            INumberToWordConverter numberToWordsConverter = NumbersToWordsConverterFactory.CreateEnglishConverter();
+            Assert.AreEqual("ten dollars and 50 cents", numberToWordsConverter.ConvertCurrency(10.50M));
+            Assert.AreEqual("one million, two hundred twenty-five thousand, one hundred fifty dollars and 01 cent", numberToWordsConverter.ConvertCurrency(1225150.01M));
+            Assert.AreEqual("one million, one thousand dollars and 20 cents", numberToWordsConverter.ConvertCurrency(1001000.20M));
+            Assert.AreEqual("one dollar and 20 cents", numberToWordsConverter.ConvertCurrency(1.20M));
+            Assert.AreEqual("zero dollars and 20 cents", numberToWordsConverter.ConvertCurrency(0.20M));
+        }
+
+        public void ShowEnglishConvertResultDeclension()
+        {
+            INumberToWordConverter numberToWordsConverter = NumbersToWordsConverterFactory.CreateEnglishConverter();
+            string convertResult = numberToWordsConverter.ConvertCurrency(100.05M);
+            MessageBox.Show(convertResult);
+        }
+
+
     }
 }

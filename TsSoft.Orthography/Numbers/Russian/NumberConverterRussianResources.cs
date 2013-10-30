@@ -2,7 +2,7 @@
 using System.Resources;
 using TsSoft.Orthography.RussianLanguage;
 
-namespace TsSoft.Orthography.Numbers
+namespace TsSoft.Orthography.Numbers.Russian
 {
     internal class NumberConverterRussianResources : INumberConverterResources
     {

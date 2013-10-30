@@ -1,7 +1,7 @@
 ﻿using System;
 using TsSoft.Commons.Text;
 
-namespace TsSoft.Orthography.Numbers
+namespace TsSoft.Orthography.Numbers.Russian
 {
     internal class NumberToWordsConverter
     {
@@ -93,29 +93,6 @@ namespace TsSoft.Orthography.Numbers
             }
             return result;
         }
-
-        //private string NumberConverterResources.ConvertNumToWord(int num, string numberGroupName, int caseId)
-        //{
-        //    string resourceName = numberGroupName + "_Case" + caseId;
-        //    var s = _resourceManager.GetString(resourceName);
-        //    if (s != null)
-        //    {
-        //        string[] values = s.Split(',');
-        //        return values[num - 1];
-        //    }
-        //    throw new Exception("Не найден ресурс " + resourceName);
-        //}
-
-        //protected string[] GetPluralizeResource(string resourceName, int caseId)
-        //{
-        //    resourceName += "_Pluralize_Case" + caseId;
-        //    var s = _resourceManager.GetString(resourceName);
-        //    if (s != null)
-        //    {
-        //        return s.Split(',');
-        //    }
-        //    throw new Exception("Не найден ресурс " + resourceName);
-        //}
 
         protected string Convert(decimal number, bool genderFemale, string[] unitForms, string[] fractForms = null)
         {

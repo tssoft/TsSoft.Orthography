@@ -2,7 +2,7 @@
 using TsSoft.Orthography.Language;
 using TsSoft.Orthography.RussianLanguage;
 
-namespace TsSoft.Orthography.Numbers
+namespace TsSoft.Orthography.Numbers.Russian
 {
     internal class NumberToRussianWordsConverter : NumberToWordsConverter, INumberToWordConverter
     {
