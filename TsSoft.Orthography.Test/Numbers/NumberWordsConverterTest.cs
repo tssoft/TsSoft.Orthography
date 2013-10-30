@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Windows.Forms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TsSoft.Orthography.Numbers;
 using TsSoft.Orthography.RussianLanguage;
@@ -108,14 +107,6 @@ namespace TsSoft.Orthography.Test.Numbers
             Assert.AreEqual("one dollar and 20 cents", numberToWordsConverter.ConvertCurrency(1.20M));
             Assert.AreEqual("zero dollars and 20 cents", numberToWordsConverter.ConvertCurrency(0.20M));
         }
-
-        public void ShowEnglishConvertResultDeclension()
-        {
-            INumberToWordConverter numberToWordsConverter = NumbersToWordsConverterFactory.CreateEnglishConverter();
-            string convertResult = numberToWordsConverter.ConvertCurrency(100.05M);
-            MessageBox.Show(convertResult);
-        }
-
 
     }
 }
