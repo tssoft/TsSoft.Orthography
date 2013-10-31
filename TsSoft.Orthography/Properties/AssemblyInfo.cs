@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("TsSoft.Orthography")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Library contains classes for number-to-word conversion")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("TsSoft.Orthography")]

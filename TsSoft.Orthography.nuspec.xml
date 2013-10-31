@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>TsSoft.Orthography</id>
+    <version>REPLACEME</version>
+    <authors>TS Soft</authors>
+    <owners>TS Soft</owners>
+    <licenseUrl>http://creativecommons.org/licenses/by/3.0/</licenseUrl>
+    <projectUrl>https://github.com/tssoft/TsSoft.Orthography/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>REPLACEME</description>
+    <copyright>REPLACEME</copyright>
+    <releaseNotes>
+REPLACEME
+    </releaseNotes>
+    <tags>Install Update Engine</tags>
+    <dependencies>
+      <dependency id="TsSoft.Commons" version="[2,3)" />
+    </dependencies>
+  </metadata>
+  <files>
+	<file src="TsSoft.Orthography.dll" target="lib\net4" />
+  </files>
+</package>
