@@ -10,7 +10,7 @@ namespace TsSoft.Orthography.Test.Numbers
     {
 
         [TestMethod]
-        [ExpectedException(typeof(System.Exception))]
+        [ExpectedException(typeof(System.Exception), AllowDerivedTypes = true)]
         public void TestUnsupportedLocale()
         {
             NumbersToWordsConverterFactory.CreateConverter(new CultureInfo("tr"));
