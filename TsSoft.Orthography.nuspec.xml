@@ -13,7 +13,7 @@
     <releaseNotes>
 REPLACEME
     </releaseNotes>
-    <tags>Install Update Engine</tags>
+    <tags>Orthography Utility</tags>
     <dependencies>
       <dependency id="TsSoft.Commons" version="[2,3)" />
     </dependencies>
